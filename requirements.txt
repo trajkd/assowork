@@ -1,0 +1,6 @@
+webapp2
+webob
+boto3
+stripe
+paste
+netifaces

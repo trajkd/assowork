@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>AssoWork</title>
+		<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/login.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/clean-blog.css">
+	</head>
+	<body>
+	<div class="form">
+		<ul class="tab-group">
+			<li class="tab"><a href="#signup">Iscriviti</a></li>
+			<li class="tab active"><a href="#login">Accedi</a></li>
+		</ul>
+
+		<div class="tab-content">
+		    <div id="login">   
+				<div class="text-warning font-weight-bold">VERSIONE SPERIMENTALE - DEMO/TEST - NON INSERITE DATI PERSONALI</div>
+				<div class="text-info">Se sei una persona fisica che opera con una organizzazione (associazione/ente/club) aderente ai servizi Assowork puoi iscriverti al portale</div>
+		    	<form action="/" method="post">
+		    		<div class="control-group">
+                        <div class="form-group floating-label-form-group controls"><label>Email o telefono</label><input class="form-control" id="UserName" name="UserName" placeholder="Email o telefono" required="required" type="text"><small class="form-text text-danger help-block"></small></div>
+                    </div>
+		    		<div class="control-group">
+                        <div class="form-group floating-label-form-group controls"><label>Password</label><input autocomplete="off" class="form-control" required="required" id="password" name="password" type="password" placeholder="Password"><small class="form-text text-danger help-block"></small></div>
+                    </div>
+		    		<label class="forgot"><a href="#" onclick="visRecupera();"><i class="fa fa-key" style="padding-right:10px;"></i>Recupero dati di accesso</a></label>
+		    		<div class="row">
+				        <div class="offset-md-7 offset-5 col-7 form-group ">
+				            <div>
+				                <label class="form-check-label "> <input class="form-check-input" data-val="true" data-val-required="The isRemember field is required." id="isRemember" name="isRemember" type="checkbox" value="true"><input name="isRemember" type="hidden" value="false">ricordami per 15 giorni</label>
+				            </div>
+				        </div>
+				    </div>
+		    		<button class="button button-block"/>Entra/Login</button>
+		    	</form>
+		    </div>
+
+	      	<div id="signup" class="container">
+		        <div class="row">
+		            <div class="col-md-10 col-lg-8 mx-auto">
+		                <p>
+			        		<span class="text-danger">L'iscrizione viene completata solo dopo la conferma della email indicata e del numero di telefono</span><br>
+			        		Al termine della registrazione le sarà inviata una email con il link per la confrma e un SMS con il codice da inserire al prossimo accesso<br>
+			        		Una volta completate le verifiche i tuoi dati saranno comunicati al gestore dell'organizzazione di cui fai parte, riceverai un messaggio da parte del tuo gestore per informarti dell'inserimeto
+			        		operativo nella tua organizzazione
+			        		<br>
+			        		L'iscrizione è totalmente gratuita
+			        	</p>
+		                <form action="/" method="post" id="signupForm" name="userInfo" enctype="multipart/form-data">
+		                	<p><i>I tuoi dati</i></p>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Nome</label><input class="form-control" data-val="true" data-val-required="Nome utente obbligatorio" type="text" id="nome" name="nome" placeholder="Nome"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Cognome</label><input class="form-control" data-val="true" data-val-required="Cognome utente obbligatorio" type="text" id="cognome" name="cognome" placeholder="Cognome"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <p><i>Organizzazione di appartenza</i></p>
+		                    <div class="text-info small">Una delle due indicazioni è obbligatoria</div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Codice di accesso</label><input class="form-control" type="text" id="codAccesso" name="codAccesso" placeholder="Codice di accesso"><small class="form-text text-danger help-block"></small></div>
+		                        <label class="small col-md-12 ">Codice di accesso fornito del referente della tua organizzazione</label>
+		                    </div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Organizzazione di appartenenza</label><input class="form-control" type="text" id="azienda" name="azienda" placeholder="Organizzazione di appartenenza"><small class="form-text text-danger help-block"></small></div>
+		                        <label class="small col-md-12 ">Indicare il nome dell'organizzazione se non si dispone del codice di accesso</label>
+		                    </div>
+		                    <p><i>Dati di accesso</i></p>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Email</label><input class="form-control"  data-val="true" data-val-email="Nel campo email è stato inserito un indirizzo email." data-val-required="Email obbligatoria" type="email" id="email" name="email" placeholder="Email"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Numero telefono cellulare</label><input class="form-control" data-val="true" data-val-required="Numero di telefono cellulare obbligatorio" type="tel" id="cell" name="cell" placeholder="Numero telefono cellulare"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Password</label><input autocomplete="off" class="form-control" data-val="true" data-val-length="La password deve essere almeno di 6 caratteri" data-val-length-max="100" data-val-length-min="6" data-val-required="Password obbligatoria" id="Password" name="Password" type="password" placeholder="Password"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <div class="control-group">
+		                        <div class="form-group floating-label-form-group controls"><label>Conferma password</label><input autocomplete="off" class="form-control" data-val="true" data-val-equalto="Le password inserite non corrispondono" data-val-equalto-other="*.Password" data-val-required="Confermare la password" id="ConfirmPassword" name="ConfirmPassword" type="password" placeholder="Conferma password"><small class="form-text text-danger help-block"></small></div>
+		                    </div>
+		                    <a href="/Home/privacy">Norme sulla privacy</a><br>
+		                    <label><input data-val="true" data-val-required="Le regole della privacy vanno accettate." id="okPrivacy" name="okPrivacy" type="checkbox" value="true"><input name="okPrivacy" type="hidden" value="false"> Accetto le regole della privacy e le condizioni d'uso del sistema</label><br>
+		                    <label><input data-val="true" data-val-required="La ricezione delle email va accettata." id="okEmail" name="okEmail" type="checkbox" value="true"><input name="okEmail" type="hidden" value="false"> Accetto la ricezione di email da parte del sistema e da chi opera con lo stesso</label><br>
+		                    <label><input data-val="true" data-val-required="La ricezione di SMS va accettata." id="okSMS" name="okSMS" type="checkbox" value="true"><input name="okSMS" type="hidden" value="false"> Accetto la ricezione di SMS da parte del sistema e da chi opera con lo stesso</label><br>
+		                    <div id="success"></div>
+		                    <div class="form-group"><button class="btn btn-primary btn-success" id="sendMessageButton" type="submit">Iscriviti</button></div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+	    </div><!-- tab-content -->
+	</div> <!-- /form -->
+	<div class="modal fade" id="modIscr" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content" id="Iscrizione"><script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-form@4.3.0/dist/jquery.form.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/clean-blog.js"></script>
+	<script type="text/javascript" src="../static/js/login.js"></script>
+	<script type="text/javascript" src="../static/js/cookies.js"></script>
+</body>

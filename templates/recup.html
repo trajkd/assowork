@@ -1,0 +1,97 @@
+<style>
+	.row {
+		margin-top: 5px;
+	}
+</style>
+<div class="modal-header">
+	<h5 class="modal-title text-info">Assowork - ripristina password</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">×</span>
+	</button>
+</div>
+
+<div class="modal-body">
+	<form action="/Home/RipristinaPwd?Length=4" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#Iscrizione" id="frmIscr" method="post">    <div class="container">
+
+		<div class="text-info border border-info" style="padding:5px;">
+			Tramite questa schermata le sarà possibile attivare la procedura per la scelta di una nuova password.
+			Una volta confermati i dati inseriti il sistema verificherà se è presente una iscrizione che faccia riferimento alla email
+			e al numero di telefono indicati, in caso positivo le sarà inviata una email contente un link che le consentirà di
+			inserire una nuova password
+
+		</div>
+
+
+		<input name="__RequestVerificationToken" type="hidden" value="rXUEZchbRNrj8QwldyTK2a0NkpiPBxHjQ7rlAf0TFtaFX-g3kGu6JtcIIDgUVg_scLAGjNySwl3dWtLr1q-4qUvVtu9W3hS22iyMyqNDO7o1">
+
+
+		<i>Inserire obbigatoriamente i seguenti dati:</i>
+		<div class="row">
+			<div class="col-md-5 col-sm-12">
+				<label class="col-md-2 control-label" for="email">email</label>
+
+			</div>
+			<div class="col-md-7 col-sm-12">
+				<input autocomplete="off" class="form-control" data-val="true" data-val-email="The email field is not a valid e-mail address." data-val-required="Email obbligatoria" id="email" name="email" type="text" value="">
+				<span class="field-validation-valid text-danger" data-valmsg-for="email" data-valmsg-replace="true"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-sm-12">
+				<label class="col-md-8 control-label" for="cell">Numero telefono cellulare</label>
+			</div>
+			<div class="col-md-7 col-sm-12">
+
+				<input autocomplete="off" class="form-control" data-val="true" data-val-required="Numero di telefono cellulare obbligatorio" id="cell" name="cell" type="text" value="">
+				<span class="field-validation-valid text-danger" data-valmsg-for="cell" data-valmsg-replace="true"></span>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<label class="text-info">Qualora non è stata confermato il suo indirizzo email selezionando questa opzione le sarà di nuovo inoltrata l'email che le consentirà di completare la registrazione</label><br>
+				<label><input data-val="true" data-val-required="The reinviaVerifica field is required." id="reinviaVerifica" name="reinviaVerifica" type="checkbox" value="true"><input name="reinviaVerifica" type="hidden" value="false"> Richiesta reinvio</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-12">
+				<div class="g-recaptcha" data-sitekey="6Le9S-QUAAAAAOg1-4UJ0WUccfzE0H9za_vn9JoM" style="display:flex;width:100%"><div><iframe src="https://www.google.com/recaptcha/api/fallback?k=6Le9S-QUAAAAAOg1-4UJ0WUccfzE0H9za_vn9JoM&amp;hl=it&amp;v=nuX0GNR875hMLA1LR7ayD9tc&amp;t=41605" frameborder="0" scrolling="no" style="width: 302px; height: 422px;"></iframe><div style="margin: -4px 0px 0px; padding: 0px; background: rgb(249, 249, 249); border: 1px solid rgb(193, 193, 193); border-radius: 3px; height: 60px; width: 300px;"><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: block;"></textarea></div></div></div>
+				<div id="errCaptcha" class="text-danger d-none">Confermare di non essere un robot</div>
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+</form></div>
+<div class="row">
+	<div class="col">
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" onclick="subIscr();" id="btnSubmNuovo" class="btn btn-success col-6"><span class="fa fa-check"></span>Registra</button>
+	<div>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="fa fa-times"></span> Annulla</button>
+	</div>
+</div>
+
+<script>
+	function subIscr() {
+		var response = grecaptcha.getResponse();
+		if (response.length == 0) {
+			$('#errCaptcha').removeClass('d-none');
+			return;
+		}
+		else {
+			$('#errCaptcha').addClass('d-none');
+		}
+		
+		$('#btnSubmNuovo').prop('disabled', true);
+		$("#frmIscr").submit();
+	}
+
+</script>
