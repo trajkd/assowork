@@ -61,8 +61,16 @@ class Handler(webapp2.RequestHandler):
 
 import netifaces
 def getClientMac():
-	print netifaces.interfaces()
-	return netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']
+	if 'eth0' in netifaces.interfaces():
+		return netifaces.ifaddresses('eth0')[netifaces.AF_LINK]['addr']
+	else if 'wlan0' in netifaces.interfaces():
+		return netifaces.ifaddresses('wlan0')[netifaces.AF_LINK]['addr']
+	else if 'en0' in netifaces.interfaces():
+		return netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']
+	else:
+		iface = netifaces.interfaces()[0]
+		return netifaces.ifaddresses(iface)[netifaces.AF_LINK]['addr']
+
 
 class GetClientMACHandler(Handler):
 	def post(self):
