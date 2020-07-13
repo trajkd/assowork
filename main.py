@@ -59,6 +59,10 @@ class Handler(webapp2.RequestHandler):
 	def render(self, template, **kw):
 		self.write(self.render_str(template, **kw))
 
+import netifaces
+def getClientMac():
+	return netifaces.ifaddresses('wlan0')[netifaces.AF_LINK]['addr']
+
 class GetClientMACHandler(Handler):
 	def post(self):
 		return getClientMac()
