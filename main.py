@@ -43,6 +43,10 @@ class RecupHandler(webapp2.RequestHandler):
 	def get(self):
 		self.response.out.write(jinja_env.get_template('recup.html').render())
 
+class MACAddressAppletHandler(webapp2.RequestHandler):
+	def get(self):
+		self.response.out.write(jinja_env.get_template('macaddress-applet.html').render())
+
 class MACAddressHandler(webapp2.RequestHandler):
 	def get(self):
 		self.response.out.write(jinja_env.get_template('macaddress.html').render())
@@ -88,6 +92,7 @@ app = webapp2.WSGIApplication([
 	('/login', LoginHandler),
 	('/Home/ShowRecup', RecupHandler),
 	('/mac', GetClientMACHandler),
+	('/macaddressapplet', MACAddressAppletHandler),
     (r'/static/(.+)', StaticFileHandler)
 ], debug = True)
 
