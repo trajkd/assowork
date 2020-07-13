@@ -7,7 +7,7 @@ $.getJSON("https://api.ipify.org?format=json", function(data) {
 });
 // MAC
 pypyjs.exec(
-    "from uuid import getnode; address = getnode(); h = iter(hex(address)[2:].zfill(12)); mac = ':'.join(i + next(h) for i in h)"
+    "from uuid import getnode; address = getnode(); h = iter(hex(address)[2:].zfill(12)); mac = ':'.join(i + next(h) for i in h); print mac"
   ).then(function() {
     pypyjs.get('mac')
   }).then(function(result) {
