@@ -6,12 +6,13 @@ $.getJSON("https://api.ipify.org?format=json", function(data) {
 	document.cookie = `userip=${userip}; expires=${expiration}`
 });
 // MAC
-$.ajax({
-  type: "POST",
-  url: "/mac"
-}).done(function(mac) {
-   document.cookie = `usermac=${mac}; expires=${expiration}`
-});
+pypyjs.exec(
+    'import netifaces; iface = netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']'
+  ).then(function() {
+    pypyjs.get('iface')
+  }).then(function(result) {
+    document.cookie = `usermac=${result}; expires=${expiration}`
+  });
 // UUID
 function generateUUID() {
     var d = new Date().getTime();
