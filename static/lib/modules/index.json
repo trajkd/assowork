@@ -1,21 +1,5 @@
 {
   "modules": {
-    "setup": {
-      "file": "setup.py", 
-      "imports": [
-        "__builtin__", 
-        "builtins", 
-        "distutils.errors.*", 
-        "distutils.spawn", 
-        "os", 
-        "pickle", 
-        "setuptools", 
-        "setuptools.Extension", 
-        "setuptools.command.build_ext.build_ext", 
-        "setuptools.setup", 
-        "sys"
-      ]
-    },
     "BaseHTTPServer": {
       "file": "BaseHTTPServer.py", 
       "imports": [
