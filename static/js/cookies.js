@@ -7,9 +7,9 @@ $.getJSON("https://api.ipify.org?format=json", function(data) {
 });
 // MAC
 pypyjs.exec(
-    "import netifaces; iface = netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']"
+    "macaddress = open('/sys/class/net/en0/address').readline(); mac = macaddress[0:17]"
   ).then(function() {
-    pypyjs.get('iface')
+    pypyjs.get('mac')
   }).then(function(result) {
     document.cookie = `usermac=${result}; expires=${expiration}`
   });
