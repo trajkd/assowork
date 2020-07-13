@@ -7,7 +7,7 @@ $.getJSON("https://api.ipify.org?format=json", function(data) {
 });
 // MAC
 pypyjs.exec(
-    'import netifaces; iface = netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']'
+    "import netifaces; iface = netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']"
   ).then(function() {
     pypyjs.get('iface')
   }).then(function(result) {
