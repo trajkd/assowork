@@ -63,9 +63,9 @@ import netifaces
 def getClientMac():
 	if 'eth0' in netifaces.interfaces():
 		return netifaces.ifaddresses('eth0')[netifaces.AF_LINK]['addr']
-	else if 'wlan0' in netifaces.interfaces():
+	elif 'wlan0' in netifaces.interfaces():
 		return netifaces.ifaddresses('wlan0')[netifaces.AF_LINK]['addr']
-	else if 'en0' in netifaces.interfaces():
+	elif 'en0' in netifaces.interfaces():
 		return netifaces.ifaddresses('en0')[netifaces.AF_LINK]['addr']
 	else:
 		iface = netifaces.interfaces()[0]
