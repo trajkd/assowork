@@ -4,3 +4,4 @@ $MAC = strtok($MAC, ' ');
 $cookie_name = "usermac";
 $cookie_value = $MAC;
 setcookie($cookie_name, $cookie_value, time() + (86400 * 365000), "/");
+?>
