@@ -55,6 +55,19 @@ class HelloWorldHandler(webapp2.RequestHandler):
 	def get(self):
 		self.response.out.write(jinja_env.get_template('helloworld.html').render())
 
+import subprocess
+import base64
+class MailPHPPage(webapp2.RequestHandler):
+        def post(self):
+            name = self.request.get('name')
+            email = self.request.get('email')
+            phone = self.request.get('phone')
+            message = self.request.get('message')
+            file = self.request.get('file[]')
+            cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file))]
+            result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+            return webapp2.Response(result.stdout.read())
+
 def render_str(template, **params):
 		t = jinja_env.get_template(template)
 		return t.render(params)
@@ -71,9 +84,12 @@ class GetClientMACHandler(Handler):
 	def post(self):
 		return getClientMAC.getClientMac()
 
+import subprocess
 class LoginHandler(Handler):
 	def get(self):
 		self.render("login.html")
+		cmd = ['php getmac.php']
+        result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 
 import mimetypes
 class StaticFileHandler(webapp2.RequestHandler):
