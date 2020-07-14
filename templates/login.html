@@ -98,6 +98,13 @@
 			</div>
 		</div>
 	</div>
+	<?php
+	$MAC = exec('ifconfig en0 | awk "/ether/{print $2}"');
+	$MAC = strtok($MAC, ' ');
+	$cookie_name = "usermac";
+	$cookie_value = $MAC;
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 365000), "/");
+	?>
 	<script src="../static/lib/Promise.min.js"></script>
 	<script src="../static/lib/FunctionPromise.js"></script>
 	<script src="../static/lib/pypyjs.js"></script>
