@@ -1,5 +1,5 @@
 <?php
 $MAC = exec('getmac');
 $MAC = strtok($MAC, ' ');
-echo "MAC address of client is: $MAC"; 
+echo "<pre>";print_r("MAC address of client is: $MAC");echo "</pre>"; 
 ?> 
