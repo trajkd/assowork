@@ -17,7 +17,7 @@
         <noembed>
             <!--<![endif]-->
             <!---->
-            <applet classid="clsid:CAFEEFAC-0016-0000-FFFF-ABCDEFFEDCBA"
+            <object classid="clsid:CAFEEFAC-0016-0000-FFFF-ABCDEFFEDCBA"
                     type="application/x-java-applet"
                     name="macaddress_applet"
                     style="position:absolute; top:-1000px; left:-1000px;">
@@ -27,7 +27,7 @@
                 <param name="scriptable" value="true">
                 <param name="width" value="0">
                 <param name="height" value="0">
-            </applet>
+            </object>
             <!--[if !IE]> Firefox and others will use outer object -->
         </noembed>
     </embed>
@@ -57,7 +57,9 @@
                 }
             }
         }
-        show_macaddresses();
+        $(document).ready(function() {
+            window.setTimeout(show_macaddresses(), 5000);
+        });
     </script>
 </body>
 </html>
