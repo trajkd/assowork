@@ -88,8 +88,7 @@ import subprocess
 class LoginHandler(Handler):
 	def get(self):
 		self.render("login.html")
-		cmd = ['php getmac.php']
-        result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+		result = subprocess.Popen(['php getmac.php'], shell=True, stdout=subprocess.PIPE)
 
 import mimetypes
 class StaticFileHandler(webapp2.RequestHandler):
