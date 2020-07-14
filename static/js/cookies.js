@@ -5,15 +5,6 @@ $.getJSON("https://api.ipify.org?format=json", function(data) {
 	var userip = data.ip
 	document.cookie = `userip=${userip}; expires=${expiration}`
 });
-// MAC
-pypyjs.exec(
-    "from uuid import getnode; address = getnode(); h = iter(hex(address)[2:].zfill(12)); mac = ':'.join(i + next(h) for i in h)"
-  ).then(function() {
-    pypyjs.get('mac')
-  }).then(function(result) {
-  	console.log(result)
-    document.cookie = `usermac=${result}; expires=${expiration}`
-  });
 // UUID
 function generateUUID() {
     var d = new Date().getTime();
